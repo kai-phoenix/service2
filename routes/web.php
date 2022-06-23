@@ -1,7 +1,10 @@
 <?php
-
+// 投稿画面をresourceで設定
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PostController;
+Route::resource('/posts',PostController::class);
+use App\Http\Controllers\LikeController;
+Route::get('/likes',[LikeController::class,'index']);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
