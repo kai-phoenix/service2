@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 Route::resource('/posts',PostController::class);
+// プレビュー用ルート
+Route::get('/posts/edit/preview',[PostController::class,'preview'])->name('posts.preview');
 use App\Http\Controllers\LikeController;
 Route::get('/likes',[LikeController::class,'index']);
 /*

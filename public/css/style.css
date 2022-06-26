@@ -87,6 +87,12 @@ img
 {
     margin: 0 20px;
 }
+/* terms */
+.terms_list
+{
+    display:flex;
+    justify-content:space-between;
+}
 /* search */
 .search_item
 {
