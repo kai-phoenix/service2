@@ -7,10 +7,11 @@ body
     font-family: 'Galvji','ヒラギノ角ゴシック', Verdana, Geneva, sans-serif;
     color:#7F3808;
 }
-p,ul,label
+p,ul,label,button
 {
     margin: 0;
     padding:0;
+    border: none;
 }
 li
 {
@@ -67,6 +68,7 @@ img
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
     align-items: center;
     margin-right: 10px;
 }

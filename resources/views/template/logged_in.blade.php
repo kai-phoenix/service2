@@ -13,9 +13,9 @@
                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                 this.closest('form').submit(); " role="button">
                     <i class="fas fa-sign-out-alt"></i>
-
                     {{ __('Log Out') }}
                 </a>
+                <!-- <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> -->
             </div>
         </form>
         @else

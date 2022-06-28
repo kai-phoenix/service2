@@ -20,7 +20,10 @@ class PostController extends Controller
     }
     public function index(Request $request)
     {
-        // dd(\Auth::user());
+        //dd(\Auth::user()->id);
+        $user = \Auth::user();
+        // 全カテゴリーの取得
+        $categorys=Category::latest()->get();
         // キーワード取得
         if($request->input('keyword')!=='')
         {
@@ -28,10 +31,13 @@ class PostController extends Controller
             // キーワード検索
             $posts=Post::where('name','LiKE',"%{$keyword}%")->orwhere('description','LiKE',"%{$keyword}%")->latest()->get();
         }
-        //$posts=Post::latest()->get();
+        $recommend_users=User::where('id','!=',$user->id)->get();
+        //dd($recommend);
         return view('posts.index',[
             'title'=>'投稿一覧',
             'posts'=>$posts,
+            'categorys'=>$categorys,
+            'recommended_users' =>$recommend_users,
         ]);
     }
 
@@ -105,6 +111,14 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Post::find($id);
+        //投稿動画データの削除
+        if($post->movie!=='')
+        {
+            \Storage::disk('public')->delete($post->movie);
+        }
+        $post->delete();
+        session()->flash('success','投稿情報を削除しました。');
+        return redirect()->route('posts.index');
     }
 }
