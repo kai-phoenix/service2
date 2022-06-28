@@ -10,6 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+// リレーション
+use App\Models\Follow;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -58,4 +61,33 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    // スコープ
+    public function scopeRecommend($query,$self_id)
+    {
+        return $query->where('id','!=','self_id')->latest()->limit(3);
+    }
+    // リレーション
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    public function follows()
+    {
+        return $this->hasMany('App\Models\Follow');
+    }
+    public function follow_users()
+    {
+        return $this->belongsToMany('App\Models\User','follows','user_id','follow_id');
+    }
+    public function followers()
+    {
+        return $this->belongsToMany('App\Models\User','follows','follow_id','user_id');
+    }
+    // フォローチェック
+    public function isFollowing($user)
+    {
+        $result=$this->follow_users->pluck('id')->contains($user->id);
+        return $result;
+    }
 }

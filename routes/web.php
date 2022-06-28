@@ -2,11 +2,20 @@
 // 投稿画面をresourceで設定
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-Route::resource('/posts',PostController::class);
+Route::resource('posts',PostController::class);
 // プレビュー用ルート
 Route::get('/posts/edit/preview',[PostController::class,'preview'])->name('posts.preview');
 use App\Http\Controllers\LikeController;
 Route::get('/likes',[LikeController::class,'index']);
+// フォロー用ルート
+use App\Http\Controllers\FollowController;
+Route::resource('follows','FollowController::class')->only([
+    'index','store','destroy'
+]);
+Route::get('/follows',[FollowController::class,'index'])->name('follows.index');
+Route::post('/follows',[FollowController::class,'store'])->name('follows.store');
+Route::delete('/follows/{follow}',[FollowController::class,'destroy'])->name('follows.destroy');
+Route::get('/follower',[FollowController::class,'followerIndex'])->name('follower.index');
 /*
 |--------------------------------------------------------------------------
 | Web Routes

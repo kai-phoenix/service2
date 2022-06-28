@@ -1,7 +1,6 @@
 @extends('template.top_logged_in')
 
 @section('title',$title)
-
 @section('content')
 <main class="main_contents">
 <h1>{{$title}}</h1>
@@ -26,7 +25,29 @@
     </div>
     <div class="follow_area">
         <p>おすすめユーザー</p>
-        <p></p>
+        <ul>
+            @forelse($recommended_users as $recommended_user)
+            <li>
+                <a href="{{route('profile.show')}}">{{$recommended_user->name}}</a>
+
+                @if(Auth::user()->isFollowing($recommended_user))
+                <form method="post" action="{{route('follows.destroy',$recommended_user)}}">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value="フォロー解除">
+                </form>
+                @else
+                <form method="post" action="{{route('follows.store',$recommended_user)}}">
+                    @csrf
+                    <input type="hidden" name="follow_id" value="{{$recommended_user->id}}">
+                    <input type="submit" value="フォロー">
+                </form>
+                @endif
+            </li>
+            @empty
+            <li>おすすめユーザーはいません。</li>
+            @endforelse
+        </ul>
     </div>
 </section>
 <div class="sort_list">
@@ -66,14 +87,23 @@
             <p>投稿時間:{{$post->created_at}}</p>
         </div>
     </div>
+    <form method="post" action="{{route('posts.destroy',$post)}}">
+    @csrf
+    @method('delete')
+    @if($post->user_id===Auth::user()->id)
+    <button type="submit">
     <img src="{{asset('images/post_remove.png')}}" alt=""投稿削除マーク" class="contents_remove">
+    </button>
+    @else
+    @endif
+    </form>
 </section>
 @empty
 <p>投稿はありません。</p>
 @endforelse
 
 <section class="posts_section">
-    <img src="{{asset('images/post_add.png')}}" alt=""新規投稿マーク" class="posts_add">
+    <img src="{{asset('images/post_add.png')}}" alt="新規投稿マーク" class="posts_add">
     <div class="posts_area">
         <form method="post" action="{{route('posts.store')}}" class="posts_form" enctype="multipart/form-data">
             @csrf
@@ -88,7 +118,11 @@
             <div class="posts_item">
                 <label for="category">カテゴリー:</label>
                 <select id="category" name="category">
-                    <option value="1">日常</option>
+                    @forelse($categorys as $category)
+                    <option value="{{$category->id}}">{{$category->category}}</option>
+                    @empty
+                    <p>カテゴリーがありません。</p>
+                    @endforelse
                 </select>
             </div>
             <div>
