@@ -20,10 +20,9 @@ class PostController extends Controller
     }
     public function index(Request $request)
     {
-        //dd(\Auth::user()->id);
         $user = \Auth::user();
         // 全カテゴリーの取得
-        $categorys=Category::latest()->get();
+        $categories=Category::latest()->get();
         // キーワード取得
         if($request->input('keyword')!=='')
         {
@@ -32,11 +31,10 @@ class PostController extends Controller
             $posts=Post::where('name','LiKE',"%{$keyword}%")->orwhere('description','LiKE',"%{$keyword}%")->latest()->get();
         }
         $recommend_users=User::where('id','!=',$user->id)->get();
-        //dd($recommend);
         return view('posts.index',[
             'title'=>'投稿一覧',
             'posts'=>$posts,
-            'categorys'=>$categorys,
+            'categories'=>$categories,
             'recommended_users' =>$recommend_users,
         ]);
     }
@@ -51,7 +49,7 @@ class PostController extends Controller
         //
     }
     // 投稿動作の記述
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         //動画ファイル投稿用のパス
         $path='';
@@ -98,9 +96,26 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $path='';
+        $movie=$request->file('movie');
+        if(isset($movie)===true)
+        {
+            $path=$movie->store('videos','public');
+        }
+        $post=Post::find($id);
+        if($post->movie!=='')
+        {
+            \Storage::disk('public')->delete(\Storage::url($post->movie));
+        }
+        $post->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'movie'=>$path,
+        ]);
+        session()->flash('success','投稿情報を編集しました');
+        return redirect()->route('posts.index');
     }
 
     /**

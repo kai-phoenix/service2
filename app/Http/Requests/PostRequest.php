@@ -25,11 +25,11 @@ class PostRequest extends FormRequest
     {
         return [
             'name'=>['required','max:300'],
-            'body'=>['required','max:1000'],
-            'category'=>['required'],
+            'description'=>['required','max:1000'],
+            'category'=>['required','exists:categories,id'],
             // 画像、動画ファイル(mp4,mov,wnv,mpeg,avi,jpg,png,jpeg)をチェック
             'movie'=>['required','file','mimes:mp4,mov,x-ms-wmv,mpeg,avi,jpeg,jpg,png',
-            'dimensions:min_width=50,min_height=50,max_width=10000,max_width=10000'],
+            'max:1000000'],
         ];
     }
 }

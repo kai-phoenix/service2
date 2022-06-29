@@ -1,4 +1,4 @@
-@extends('template.top_logged_in')
+@extends('template.logged_in')
 
 @section('title',$title)
 @section('content')
