@@ -3,14 +3,14 @@
 @section('header')
 <header class="header">
     <div>
-    <a href="{{route('posts.index')}}">
-    HOME
-    </a>
+    <!-- <a href="{{route('posts.index')}}">
+        <i class="fa-solid fa-house"></i>
+    </a> -->
     <p class="header_heading">Memorize</p>
     </div>
     <nav class="header_nav">
-        <div>
-            <p>こんにちは。{{Auth::user()->name}}さん!</p>
+        <div class="header_login_state">
+            <p class="header_login_user">こんにちは。{{Auth::user()->name}}さん!</p>
         @if (auth()->id())
         <form method="POST" action="{{ route('logout') }}">
             @csrf
@@ -48,7 +48,7 @@
             <li class="header_item">
                 <a href="{{route('profile.show')}}">
                     <p class="header_topic">マイページ</p>
-                    <img src="{{asset('images/mypage_icon.png')}}" alt="マイページアイコン" class="header_icon2">
+                    <img src="{{asset('images/mypage_icon.png')}}" alt="マイページアイコン" class="header_icon">
                 </a>
             </li>
         </ul>

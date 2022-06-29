@@ -2,10 +2,14 @@
 
 @section('header')
 <header class="header">
-    <p class="header_heading">Memorize</p>
+    <div class="header_logo">
+        <a href="{{route('posts.index')}}"><i class="fa-solid fa-house header_logo_image"></i>
+        </a>
+        <p class="header_heading">Memorize</p>
+    </div>
     <nav class="header_nav">
-        <div>
-            <p>こんにちは。{{Auth::user()->name}}さん!</p>
+        <div class="header_login_state">
+            <p class="header_login_user">こんにちは。{{Auth::user()->name}}さん!</p>
         @if (auth()->id())
         <form method="POST" action="{{ route('logout') }}">
             @csrf
@@ -29,16 +33,22 @@
         </div>
         <ul class="header_list">
             <li class="header_item">
-                <p class="header_topic">お気に入り投稿</p>
-                <img src="{{asset('images/file_icon.png')}}" alt="お気に入りアイコン" class="header_icon">
+                <a href="">
+                    <p class="header_topic">お気に入り投稿</p>
+                    <img src="{{asset('images/file_icon.png')}}" alt="お気に入りアイコン" class="header_icon">
+                </a>
             </li>
             <li class="header_item">
-                <p class="header_topic">フォロワー一覧</p>
-                <img src="{{asset('images/follower_icon.png')}}" alt="フォロワー一覧アイコン" class="header_icon">
+                <a href="{{route('follower.index')}}">
+                    <p class="header_topic">フォロワー一覧</p>
+                    <img src="{{asset('images/follower_icon.png')}}" alt="フォロワー一覧アイコン" class="header_icon">
+                </a>
             </li>
             <li class="header_item">
-                <p class="header_topic">マイページ</p>
-                <img src="{{asset('images/mypage_icon.png')}}" alt="マイページアイコン" class="header_icon2">
+                <a href="{{route('profile.show')}}">
+                    <p class="header_topic">マイページ</p>
+                    <img src="{{asset('images/mypage_icon.png')}}" alt="マイページアイコン" class="header_icon">
+                </a>
             </li>
         </ul>
     <nav>
