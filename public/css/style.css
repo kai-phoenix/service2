@@ -1,0 +1,289 @@
+html
+{
+    font-size:62.5%;
+}
+body
+{
+    font-family: 'Galvji','ヒラギノ角ゴシック', Verdana, Geneva, sans-serif;
+    color:#7F3808;
+    font-size: 1.5rem;
+}
+p,ul,label,button
+{
+    margin: 0;
+    padding:0;
+    border: none;
+}
+li
+{
+    list-style: none;
+}
+
+input[type="file"]
+{
+    display:none;
+}
+img
+{
+    max-width: 100%;
+    height:auto;
+}
+
+/* top_header */
+.header
+{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    padding: 10px 0 10px 0;
+    background-color: #FF7111;
+    border-radius: 20px;
+}
+.header_logo
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto 0 0 20px;
+}
+.header_logo_image
+{
+    width: 20px;
+    font-size: 1.5em;
+}
+.header_heading
+{
+    font-size:5.0rem;
+    margin: 0 0 0 20px;
+}
+.header_nav
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: normal;
+    padding: 10px 0 0;
+    margin: auto 20px 0 0;
+}
+.header_login_state
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.header_login_user
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+.header_list
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+.header_item
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.header_topic
+{
+    margin: 0;
+}
+.header_icon
+{
+    width: 40px;
+}
+
+/* main */
+.main_contents
+{
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+}
+/* terms */
+.terms_list
+{
+    display:flex;
+    justify-content:space-between;
+}
+/* search */
+.search_title
+{
+    margin: 20px 0 10px;
+}
+.search_item
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:280px;
+    margin-bottom: 5px;
+}
+.search_input
+{
+    width:100px;
+}
+.search_word
+{
+    width: 100%;
+}
+.search_submit
+{
+    background-color:#0FD6D6;
+    margin:0 0 0 10px;
+    border: 1px solid #7F3808;
+    border-radius: 5px;
+}
+/* follow */
+.follow_title
+{
+    margin: 20px 0 10px;
+}
+/* sort */
+.sort_list
+{
+    display: flex;
+    justify-content: flex-end;
+    margin:0 0 10px 0;
+}
+.sort_link
+{
+    margin:0 10px 0 0;
+}
+/* contents */
+.contents_section
+{
+    margin:0 0 30px 0;
+}
+.contents_area
+{
+    border: 3px solid #FF7111;
+    padding:10px 20px;
+}
+.contents_list
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.contents_video_form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
+.contents_width
+{
+    width:400px;
+}
+.contents_button
+{
+    background-color:#0FD6D6 ;
+    border: 1px solid #7F3808;
+    border-radius: 5px;
+    width: 100px;
+    margin: 0 auto;
+    padding: 5px;
+}
+.contents_body_list
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    width: 400px;
+}
+.contents_title
+{
+    margin: 0 0 30px 0;
+}
+.contents_info
+{
+    display: flex;
+    flex-direction: column;
+    width:400px;
+    margin: 0 0 0 auto;
+}
+.contents_post_info
+{
+    margin: 20px 0 10px;
+}
+.contents_time
+{
+    text-align:right;
+}
+.contents_remove
+{
+    display: block;
+    width:30px;
+    margin: 10px 0 0 auto;
+}
+
+/* posts */
+.posts_section
+{
+    margin: 0 0 50px 0;
+}
+.posts_area
+{
+    display: flex;
+    justify-content: center;
+    border: 2px dotted #FF7111;
+    padding:20px 0;
+}
+.posts_add
+{
+    width:30px;
+    margin: 0 0 10px 0;
+}
+.posts_form
+{
+    text-align: center;
+}
+.posts_item
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:300px;
+    margin:0 0 20px 0;
+}
+
+.posts_file_list
+{
+    text-align:left;
+}
+.posts_file_input
+{
+    background-color:#0FD6D6;
+    border: 1px solid #7F3808;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+.posts_submit
+{
+    background-color:#0FD6D6;
+    border: 1px solid #7F3808;
+    border-radius: 5px;
+    padding: 5px;
+}
+/* footer */
+.footer
+{
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px 0 10px 0;
+    background-color: #FF7111;
+    border-radius: 10px;
+}
