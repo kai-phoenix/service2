@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 // リレーション
 use App\Models\Follow;
+use App\Models\Like;
 
 class User extends Authenticatable
 {
@@ -89,5 +90,14 @@ class User extends Authenticatable
     {
         $result=$this->follow_users->pluck('id')->contains($user->id);
         return $result;
+    }
+    //いいね機能
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+    public function likePosts()
+    {
+        return $this->belongsToMany(Post::class,'likes');
     }
 }
