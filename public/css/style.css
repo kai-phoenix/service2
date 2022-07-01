@@ -28,7 +28,18 @@ img
     max-width: 100%;
     height:auto;
 }
-
+.success
+{
+    color:#0FD6D6;
+    font-weight: bold;
+    margin:20px;
+}
+.error
+{
+    color:red;
+    font-weight: bold;
+    margin:20px;
+}
 /* top_header */
 .header
 {
