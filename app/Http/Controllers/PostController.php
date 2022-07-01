@@ -30,6 +30,10 @@ class PostController extends Controller
             // キーワード検索
             $posts=Post::where('name','LiKE',"%{$keyword}%")->orwhere('description','LiKE',"%{$keyword}%")->latest()->get();
         }
+        // 並び替えの設定
+        $sort=$request->sort;
+        $posts=$posts->sortByDesc($sort);
+
         $recommend_users=User::where('id','!=',$user->id)->get();
         return view('posts.index',[
             'title'=>'投稿一覧',
