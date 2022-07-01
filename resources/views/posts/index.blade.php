@@ -55,8 +55,8 @@
 <div class="sort_list">
     <p>並び替え:</p>
     <div>
-        <a href="" class="sort_link">投稿日時</a>
-        <a href="">カテゴリー</a>
+        <a href="./posts?sort=time" class="sort_link">投稿日時</a>
+        <a href="./posts?sort=category">カテゴリー</a>
     </div>
 </div>
 

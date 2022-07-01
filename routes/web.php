@@ -15,6 +15,7 @@ Route::resource('follows','FollowController::class')->only([
 Route::post('/follows',[FollowController::class,'store'])->name('follows.store');
 Route::delete('/follows/{follow}',[FollowController::class,'destroy'])->name('follows.destroy');
 Route::get('/follower',[FollowController::class,'followerIndex'])->name('follower.index');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
