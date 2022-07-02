@@ -15,8 +15,8 @@
         <!-- <link rel='stylesheet' href='./css/app.css'> -->
         <link rel='stylesheet' href="{{url(mix('css/app.css'))}}">
         <!-- Scripts -->
-        <!-- <script src="{{ mix('js/app.js') }}" defer></script> -->
-        <script src="./js/app.js" defer></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
+        <!-- <script src="./js/app.js" defer></script> -->
         <!-- <script src="{{url(mix('js/app.js'))}}" defer></script> -->
     </head>
     <body>
