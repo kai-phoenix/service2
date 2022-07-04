@@ -6,7 +6,9 @@
     </x-slot>
 
     <div>
-        <a class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8" href="{{route('posts.index')}}">投稿に戻る</a>
+        <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+        <button class="max-w-7xl mx-auto py-3 px-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition" onclick="location.href='{{route('posts.index')}}'">投稿に戻る</button>
+        </div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                 @livewire('profile.update-profile-information-form')
