@@ -20,24 +20,29 @@ class PostController extends Controller
     }
     public function index(Request $request)
     {
+        // ログインユーザー情報の取得
         $user = \Auth::user();
         // 全カテゴリーの取得
         $categories=Category::latest()->get();
+        // フォローユーザー情報の取得
+        $follow_user_ids=$user->follow_users->pluck('id');
+        // $posts=$user->posts()->orWhereIn('user_id',$follow_user_ids);
+        $posts=Post::whereIn('user_id',$follow_user_ids->concat([$user->id]));
         // キーワード取得
-        if($request->input('keyword')!=='')
+        if($request->input('keyword')!=='' && $request->input('keyword')!==NULL)
         {
             $keyword=$request->input('keyword');
             // キーワード検索
-            $posts=Post::where('name','LiKE',"%{$keyword}%")->orwhere('description','LiKE',"%{$keyword}%")->latest()->get();
+            $posts->where('name','LiKE',"%{$keyword}%")->orWhere('description','LiKE',"%{$keyword}%");
         }
+        $user_posts=$posts->latest()->get();
         // 並び替えの設定
         $sort=$request->sort;
-        $posts=$posts->sortByDesc($sort);
-
+        $user_posts=$user_posts->sortByDesc($sort);
         $recommend_users=User::where('id','!=',$user->id)->get();
         return view('posts.index',[
             'title'=>'投稿一覧',
-            'posts'=>$posts,
+            'posts'=>$user_posts,
             'categories'=>$categories,
             'recommended_users' =>$recommend_users,
         ]);
@@ -92,11 +97,12 @@ class PostController extends Controller
     public function edit($id)
     {
         $post=Post::find($id);
-        $category=Category::find($post->pluck('category_id'))->first();
+        // 全カテゴリーの取得
+        $categories=Category::latest()->get();
         return view('posts.edit',[
             'title'=>'投稿編集',
             'post'=>$post,
-            'category'=>$category,
+            'categories'=>$categories,
         ]);
     }
 
@@ -117,6 +123,7 @@ class PostController extends Controller
             'name'=>$request->name,
             'description'=>$request->description,
             'movie'=>$path,
+            'category_id'=>$request->category,
         ]);
         session()->flash('success','投稿情報を編集しました');
         return redirect()->route('posts.index');

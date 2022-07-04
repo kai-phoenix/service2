@@ -28,6 +28,14 @@ img
     max-width: 100%;
     height:auto;
 }
+/* profileの戻るボタン */
+.profile_button
+{
+    background: gray;
+    margin: 20px;
+    border-radius: 5px;
+}
+/* 投稿後のメッセージ */
 .success
 {
     color:#0FD6D6;
@@ -44,12 +52,15 @@ img
     margin:0 auto;
     padding:20px;
 }
+/*スマホ用の要素切り替え*/
+.sp
+{
+    display: none;
+}
+
 /* top_header */
 .header
 {
-    display:flex;
-    justify-content: space-between;
-    align-items: flex-end;
     max-width: 1000px;
     margin: 0 auto 30px;
     padding: 10px 0 10px 0;
@@ -67,6 +78,10 @@ img
 {
     width: 20px;
     font-size: 1.5em;
+    margin:0 0 0 20px;
+    position: absolute;
+    left: 0%;
+    top: 20px;
 }
 .header_heading
 {
@@ -76,8 +91,7 @@ img
 .header_nav
 {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content:space-between;
     align-items: normal;
     padding: 10px 0 0;
     margin: auto 20px 0 0;
@@ -85,9 +99,9 @@ img
 .header_login_state
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 0 20px 10px 0;
 }
 .header_login_user
 {
@@ -97,7 +111,8 @@ img
 .header_list
 {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: flex-end;
     padding: 0;
 }
 .header_item
@@ -179,6 +194,7 @@ img
 .contents_section
 {
     margin:0 0 30px 0;
+    min-width: 300px;
 }
 .contents_area
 {
@@ -188,7 +204,6 @@ img
 .contents_list
 {
     display: flex;
-    flex-wrap: wrap;
     justify-content:space-between;
 }
 .contents_video_form
@@ -200,6 +215,7 @@ img
 .contents_width
 {
     width:400px;
+    max-width: 100%;
 }
 .contents_button
 {
@@ -216,6 +232,7 @@ img
     flex-direction: column;
     justify-content:space-between;
     width: 400px;
+    margin: 0 0 0 50px;
 }
 .contents_title
 {
@@ -225,7 +242,6 @@ img
 {
     display: flex;
     flex-direction: column;
-    width:400px;
     margin: 0 0 0 auto;
 }
 .contents_post_info
@@ -254,6 +270,7 @@ img
     justify-content: center;
     border: 2px dotted #FF7111;
     padding:20px 0;
+    min-width: 300px;
 }
 .posts_add
 {
@@ -292,6 +309,23 @@ img
     border-radius: 5px;
     padding: 5px;
 }
+/* follower */
+.follower_list
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1000px;
+    margin: 10px auto 20px;
+}
+.follower_image
+{
+    width:100px;
+}
+.follower_title
+{
+    margin:0 0 0 50px;
+}
 /* footer */
 .footer
 {
@@ -301,4 +335,150 @@ img
     padding: 10px 0 10px 0;
     background-color: #FF7111;
     border-radius: 10px;
+}
+
+
+/*タブレット */
+@media (max-width:768px)
+{
+    .sp
+    {
+        display: block;
+    }
+    /* sp_top_header */
+    .header
+    {
+        margin: 0 auto 30px;
+        padding: 10px 0 10px 0;
+        background-color: #FF7111;
+        border-radius: 20px;
+    }
+    .header_logo_image
+    {
+        width: 20px;
+        font-size: 1.5em;
+        margin:0 0 0 20px;
+        position: absolute;
+        left: 0%;
+        top: 20px;
+    }
+    .header_heading
+    {
+        width: 100%;
+        text-align: center;
+        font-size:4.0rem;
+    }
+    .header_nav
+    {
+        align-items: center;
+        padding: 10px 0 0;
+        margin: auto 20px;
+    }
+    .header_login_state
+    {
+        display: flex;
+        justify-content:flex-end;
+        align-items: center;
+        margin: 0 20px 0 0;
+    }
+    .header_login_user
+    {
+        display: none;
+    }
+    .header_menu_btn
+    {
+        position: absolute;
+        z-index: 2;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+    .header_menu_cansel_btn
+    {
+        position: absolute;
+        z-index: 2;
+        width: 40px;
+        height: 40px;
+        top: 5px;
+        left: 5px;
+        color: #333333;
+        cursor: pointer;
+    }
+    .header_list
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 170px;
+        height: 25vh;
+        display: none;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: #555;
+        padding: 30px 0 0 0;
+        background: #EFEFEF;
+        border: 2px solid #7F3808;
+        opacity: 0;
+        transition: opacity .3s linear;
+    }
+    .header_item
+    {
+        width: 100%;
+        height: auto;
+        padding: .5em 1em;
+        text-align: center;
+        color: #fff;
+        box-sizing: border-box;
+    }
+    /* ハンバーガーメニューアニメーション */
+    .is_active
+    {
+        pointer-events: auto;
+        opacity: 1;
+        z-index: 3;
+        display: flex;
+    }
+    .header_topic
+    {
+        margin: 0;
+    }
+    .header_icon
+    {
+        width: 40px;
+    }
+
+    /* sp_terms */
+    .terms_list
+    {
+        display:flex;
+        flex-direction:column-reverse;
+        justify-content:space-between;
+        margin: 0 0 50px 0;
+    }
+    /* sp_contents */
+    .contents_list
+    {
+        display:block;
+    }
+    .contents_video_form
+    {
+        display: block;
+        text-align: center;
+    }
+    .contents_body_list
+    {
+        margin:0 auto;
+    }
+    .contents_info
+    {
+        margin: 0 auto;
+        max-width: 400px;
+    }
+}
+
+/* スマホ */
+@media (max-width:375px)
+{
+
 }

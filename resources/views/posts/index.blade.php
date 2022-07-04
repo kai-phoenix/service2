@@ -7,7 +7,7 @@
 <section class="terms_list">
     <div class="search_area">
         <p class="search_title">絞り込み</p>
-        <form method="GET">
+        <form method="GET" action="">
             <!-- <div class="search_item">
                 <label for="span">期間:</label>
                 <span>
@@ -63,10 +63,10 @@
 @forelse($posts as $post)
 <section class="contents_section">
     <div class="contents_area">
-        <a class="like_button">
+        <!-- <a class="like_button">
         <i class="fa-solid fa-heart"></i>
             {{--$post->isLikedBy(Auth::user())--}}
-        </a>
+        </a> -->
         <!-- <form method="post" class="like" action="{{-- route('posts.toggle_like', $post) --}}">
             @csrf
             @method('patch')
@@ -139,7 +139,7 @@
                 </select>
             </div>
             <div class="posts_item">
-                <p>ファイル投稿:<br>(上限:1GB)</p>
+                <p>ファイル投稿:<br>(上限:20MB)</p>
                 <div class="posts_file_list">
                     <label class="posts_file_input">
                         <input type="file" name="movie">

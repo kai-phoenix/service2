@@ -70,7 +70,7 @@ class User extends Authenticatable
     // リレーション
     public function posts()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany('App\Models\Post');
     }
 
     public function follows()

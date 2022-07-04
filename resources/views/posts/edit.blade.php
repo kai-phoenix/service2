@@ -51,11 +51,19 @@
             <div class="posts_item">
                 <label for="category">カテゴリー:</label>
                 <select id="category" name="category">
-                    <option value="{{$category->id}}">{{$category->category}}</option>
+                    @forelse($categories as $category)
+                        @if($category->id===$post->category->id)
+                        <option value="{{$category->id}}" selected>{{$category->category}}</option>
+                        @else
+                        <option value="{{$category->id}}">{{$category->category}}</option>
+                        @endif
+                    @empty
+                    <p>カテゴリーがありません。</p>
+                    @endforelse
                 </select>
             </div>
             <div class="posts_item">
-                <p>ファイル投稿:<br>(上限:1GB)</p>
+                <p>ファイル投稿:<br>(上限:20MB)</p>
                 <div class="posts_file_list">
                     <label class="posts_file_input">
                         <input type="file" name="movie">
@@ -65,7 +73,7 @@
                 </div>
             </div>
             <!-- <button type="button" value="" onclick="window.open('{{route('posts.preview',$post)}}','_blank')">プレビュー</button> -->
-            <input type="submit" value="新規投稿" class="posts_submit">
+            <input type="submit" value="投稿編集" class="posts_submit">
         </form>
     </div>
 </section>
