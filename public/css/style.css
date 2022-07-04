@@ -339,7 +339,7 @@ img
 
 
 /*タブレット */
-@media (max-width:768px)
+@media screen and (max-width:768px)
 {
     .sp
     {
@@ -475,10 +475,4 @@ img
         margin: 0 auto;
         max-width: 400px;
     }
-}
-
-/* スマホ */
-@media (max-width:375px)
-{
-
 }
