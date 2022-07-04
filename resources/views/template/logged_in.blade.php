@@ -2,42 +2,47 @@
 
 @section('header')
 <header class="header">
-    <div class="header_logo">
-        <a href="{{route('posts.index')}}"><i class="fa-solid fa-house header_logo_image"></i>
-        </a>
-        <p class="header_heading">Memorize</p>
-    </div>
-    <nav class="header_nav">
-        <div class="header_login_state">
-            <p class="header_login_user">こんにちは。{{Auth::user()->name}}さん!</p>
-        @if (auth()->id())
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <div class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                this.closest('form').submit(); " role="button">
-                    <i class="fas fa-sign-out-alt"></i>
-                    {{ __('Log Out') }}
-                </a>
-                <!-- <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> -->
-            </div>
-        </form>
-        @else
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}" role="button">
-                <i class="fas fa-sign-in-alt"></i>
-                Login
+    <div class="header_login_state">
+    <a href="{{route('posts.index')}}"><i class="fa-solid fa-house header_logo_image"></i>
+    </a>
+    <p class="header_login_user">こんにちは。{{Auth::user()->name}}さん!</p>
+    @if (auth()->id())
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <div class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+            this.closest('form').submit(); " role="button">
+                <i class="fas fa-sign-out-alt"></i>
+                {{ __('Log Out') }}
             </a>
-        </li>
-        @endif
+            <!-- <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> -->
+        </div>
+    </form>
+    @else
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('login') }}" role="button">
+            <i class="fas fa-sign-in-alt"></i>
+            Login
+        </a>
+    </li>
+    @endif
+    </div>
+
+    <nav class="header_nav">
+        <p class="header_heading">Memorize</p>
+        <div class="header_menu_btn sp">
+            <i class="fa-solid fa-bars fa-3x  sp"  aria-hidden="true"></i>
         </div>
         <ul class="header_list">
-            <li class="header_item">
+            <!-- <li class="header_item">
                 <a href="">
                     <p class="header_topic">お気に入り投稿</p>
                     <img src="{{asset('images/file_icon.png')}}" alt="お気に入りアイコン" class="header_icon">
                 </a>
-            </li>
+            </li> -->
+            <div class="header_menu_cansel_btn sp">
+                <i class="fa-solid fa-xmark fa-3x sp"></i>
+            </div>
             <li class="header_item">
                 <a href="{{route('follower.index')}}">
                     <p class="header_topic">フォロワー一覧</p>
@@ -51,6 +56,6 @@
                 </a>
             </li>
         </ul>
-    <nav>
+    </nav>
 </header>
 @endsection
