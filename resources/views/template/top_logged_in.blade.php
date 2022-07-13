@@ -30,12 +30,12 @@
             <i class="fa-solid fa-bars fa-3x  sp"  aria-hidden="true"></i>
         </div>
         <ul class="header_list">
-            <!-- <li class="header_item">
+            <li class="header_item">
                 <a href="">
                     <p class="header_topic">お気に入り投稿</p>
                     <img src="{{asset('images/file_icon.png')}}" alt="お気に入りアイコン" class="header_icon">
                 </a>
-            </li> -->
+            </li>
             <div class="header_menu_cansel_btn sp">
                 <i class="fa-solid fa-xmark fa-3x sp"></i>
             </div>

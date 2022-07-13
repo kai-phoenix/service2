@@ -3,7 +3,7 @@
 @section('header')
 <header class="header">
     <div class="header_login_state">
-    <a href="{{route('posts.index')}}"><i class="fa-solid fa-house header_logo_image"></i>
+    <a href="{{route('posts.index')}}" class=" header_logo_image"><i class="fa-solid fa-house"></i>
     </a>
     <p class="header_login_user">こんにちは。{{Auth::user()->name}}さん!</p>
     @if (auth()->id())
@@ -34,12 +34,12 @@
             <i class="fa-solid fa-bars fa-3x  sp"  aria-hidden="true"></i>
         </div>
         <ul class="header_list">
-            <!-- <li class="header_item">
+            <li class="header_item">
                 <a href="">
                     <p class="header_topic">お気に入り投稿</p>
                     <img src="{{asset('images/file_icon.png')}}" alt="お気に入りアイコン" class="header_icon">
                 </a>
-            </li> -->
+            </li>
             <div class="header_menu_cansel_btn sp">
                 <i class="fa-solid fa-xmark fa-3x sp"></i>
             </div>
