@@ -31,7 +31,7 @@
         </div>
         <ul class="header_list">
             <li class="header_item">
-                <a href="">
+                <a href="{{route('likes.index')}}">
                     <p class="header_topic">お気に入り投稿</p>
                     <img src="{{asset('images/file_icon.png')}}" alt="お気に入りアイコン" class="header_icon">
                 </a>

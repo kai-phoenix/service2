@@ -63,14 +63,14 @@
 @forelse($posts as $post)
 <section class="contents_section">
     <div class="contents_area">
-        <!-- <a class="like_button">
+        <a class="like_button">
         <i class="fa-solid fa-heart"></i>
             {{--$post->isLikedBy(Auth::user())--}}
-        </a> -->
-        <!-- <form method="post" class="like" action="{{-- route('posts.toggle_like', $post) --}}">
+        </a>
+        <form method="post" class="like" action="{{-- route('posts.toggle_like', $post) --}}">
             @csrf
             @method('patch')
-        </form> -->
+        </form>
         <div class="contents_list">
             @csrf
             <div class="contents_video_form">

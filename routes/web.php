@@ -6,7 +6,7 @@ Route::resource('posts',PostController::class);
 // プレビュー用ルート
 Route::get('/posts/edit/preview',[PostController::class,'preview'])->name('posts.preview');
 use App\Http\Controllers\LikeController;
-Route::get('/likes',[LikeController::class,'index']);
+Route::get('/likes',[LikeController::class,'index'])->name('likes.index');
 // フォロー用ルート
 use App\Http\Controllers\FollowController;
 Route::resource('follows','FollowController::class')->only([
